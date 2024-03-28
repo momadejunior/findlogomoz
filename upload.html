@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Testing file upload</title>
+  <title>Encontrar logotipos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+  <style>
+    
+    /* Style for the progress bar */
+
+    body{
+        font-family: sans-serif;
+    }
+
+    .form {
+	background: #fff;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+	box-shadow: 2px 2px 9px lightgray;
+	justify-content: center;
+	justify-items: center;
+	align-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+
+#uploader {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 4px;
+}
+    /* Style for the file input button */
+    #fileButton {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /* Styling for when the button is hovered */
+    #fileButton:hover {
+      background-color: #0056b3;
+    }
+    </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">FindLogo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a href="upload.html">upload</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+	<div class="form">
+    <h3>upload logo</h3>
+    <progress value="0" max="100" id="uploader">0%</progress>
+    <div>
+      <input type="file" value="upload" accept=".jpg" id="fileButton">
+    </div>
+  </div> 
+	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+	<script>
+
+	
+    let url = 'https://api-us-west-2.hygraph.com/v2/cltnjyce406ze07v0wktr3jh3/master';
+
+    	//BE SURE TO PROTECT EVERYTHING IN THE CONFIG
+		//DON'T COMMIT IT!!!
+		const firebaseConfig = {
+    apiKey: "AIzaSyB9WDZnhjGzzjm66flZUmoHDQq6tdZDmsA",
+    authDomain: "chatbot-93051.firebaseapp.com",
+    databaseURL: "https://chatbot-93051-default-rtdb.firebaseio.com",
+    projectId: "chatbot-93051",
+    storageBucket: "chatbot-93051.appspot.com",
+    messagingSenderId: "910650346544",
+    appId: "1:910650346544:web:a632788aa15a6b3e9471f5",
+    measurementId: "G-TK65S06RH0"
+  };
+
+		firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script type="text/javascript">
+
+		// firebase bucket name
+		// REPLACE WITH THE ONE YOU CREATE
+		// ALSO CHECK STORAGE RULES IN FIREBASE CONSOLE
+		var fbBucketName = 'images';
+
+		// get elements
+		var uploader = document.getElementById('uploader');
+		var fileButton = document.getElementById('fileButton');
+
+		// listen for file selection
+		fileButton.addEventListener('change', function (e) {
+
+			// what happened
+			console.log('file upload event', e);
+
+			// get file
+			var file = e.target.files[0];
+
+			// create a storage ref
+			var storageRef = firebase.storage().ref(`${fbBucketName}/${file.name}`);
+
+			// upload file
+			var uploadTask = storageRef.put(file);
+
+			// The part below is largely copy-pasted from the 'Full Example' section from
+			// https://firebase.google.com/docs/storage/web/upload-files
+
+			// update progress bar
+			uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+				function (snapshot) {
+					// Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+					var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+					uploader.value = progress;
+					console.log('Upload is ' + progress + '% done');
+					switch (snapshot.state) {
+						case firebase.storage.TaskState.PAUSED: // or 'paused'
+							console.log('Upload is paused');
+							break;
+						case firebase.storage.TaskState.RUNNING: // or 'running'
+							console.log('Upload is running');
+							break;
+					}
+				}, function (error) {
+
+					// A full list of error codes is available at
+					// https://firebase.google.com/docs/storage/web/handle-errors
+					switch (error.code) {
+						case 'storage/unauthorized':
+							// User doesn't have permission to access the object
+							break;
+
+						case 'storage/canceled':
+							// User canceled the upload
+							break;
+
+						case 'storage/unknown':
+							// Unknown error occurred, inspect error.serverResponse
+							break;
+					}
+				}, function () {
+					// Upload completed successfully, now we can get the download URL
+					// save this link somewhere, e.g. put it in an input field
+					var downloadURL = uploadTask.snapshot.downloadURL;
+					console.log('downloadURL', downloadURL);
+
+          fetch(url,{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              query:`mutation InsertFile {
+  createAsset(data: {fileName: "", uploadUrl: "${downloadURL}"}) {
+    id
+    url
+    fileName
+  }
+}
+`,
+            })
+          })
+
+          .then(res=>res.json())
+          .then(data=>{
+             console.log(data)
+
+            let idImage = data.data.createAsset.id;
+
+          console.log(idImage);
+          idImage.toString();
+
+  
+
+             fetch(url,{
+               method: 'POST',
+               headers: {
+                 'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                 query:`mutation PublicarImagem {
+                        publishAsset(where: {id: "${idImage}"}, to: PUBLISHED) {
+                          id
+                          url
+                        }
+                      }
+                 `,
+               })
+             })
+             
+             .then(response=>response.json())
+             .then(data=>{
+              console.log(data)
+             })
+          })
+
+
+
+				});
+
+		});
+
+
+	</script>
+
+</body>
+
+</html>
