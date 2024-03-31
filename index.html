@@ -14,6 +14,10 @@
         img {
             width: 100%;
         }
+        .cards-logo{
+          border: 2px solid lightgrey;
+          text-align: center;
+        }
     </style>
 
 </head>
@@ -83,21 +87,32 @@
              console.log(data)
 
              let logos = data.data.assets;
-             let urlLogo = logos.url;
 
              for(i=0; i<logos.length; i++){
                
-                app.innerHTML+=` <div class="col-md-2">
+                app.innerHTML+=` <div class="col-md-2 cards-logo">
                 <img src="${logos[i].url}" alt="${logos[i].fileName}"/>
-                <a href="${logos[i].url}" download="true">download</a>
+                <a href="#" onclick="downloadFunction('${logos[i].url}', '${logos[i].fileName}')">download</a>
                 </div>`;
              }
-
-             console.log(urlLogo);
-
-          
- 
         })
+
+        function downloadFunction(url, fileName) {
+            fetch(url)
+                .then(res => res.blob())
+                .then(blob => {
+                    const a = document.createElement('a');
+                    const objectURL = URL.createObjectURL(blob);
+                    a.href = objectURL;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
 
 
     </script>
