@@ -101,7 +101,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="index.html">FindLogo</a>
+            <a class="navbar-brand" href="index.html">findlogomoz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -185,7 +185,7 @@
                 app.innerHTML+=` <div class="col-md-2">
                 <div class="cards-logo">
                     <div class="col-img"><img src="${logos[i].url}" alt="${logos[i].fileName}"/></div>
-                    <div class="button-download"> <a href="#" onclick="downloadFunction('${logos[i].url}', '${logos[i].fileName}')">download</a></div>
+                    <a href="#" onclick="downloadFunction('${logos[i].url}', '${logos[i].fileName}')"><div class="button-download">download</div></a>
                 </div>
                 </div>`;
              }
