@@ -83,12 +83,15 @@
         background: blue;
 
        }
-
-		.search{
-			  background-color:#eee;
-        font-family: "Poppins", sans-serif;
-        font-weight: 300;
+		.search {
+			background-color: #1f3a5b;
+			font-family: "Poppins", sans-serif;
+			font-weight: 300;
 		}
+		.button-download {
+	background: antiquewhite;
+	padding: 6px;
+}
 	</style>
 
 </head>
@@ -181,7 +184,7 @@
                 app.innerHTML+=` <div class="col-md-2">
                 <div class="cards-logo">
                     <div class="col-img"><img src="${logos[i].url}" alt="${logos[i].fileName}"/></div>
-                    <a href="#" onclick="downloadFunction('${logos[i].url}', '${logos[i].fileName}')">download</a>
+                    <div class="button-download"> <a href="#" onclick="downloadFunction('${logos[i].url}', '${logos[i].fileName}')">download</a></div>
                 </div>
                 </div>`;
              }
