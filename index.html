@@ -90,9 +90,11 @@
 
              for(i=0; i<logos.length; i++){
                
-                app.innerHTML+=` <div class="col-md-2 cards-logo">
-                <div class="col-img"><img src="${logos[i].url}" alt="${logos[i].fileName}"/></div>
-                <a href="#" onclick="downloadFunction('${logos[i].url}', '${logos[i].fileName}')">download</a>
+                app.innerHTML+=` <div class="col-md-2">
+                <div class="cards-logo">
+                    <div class="col-img"><img src="${logos[i].url}" alt="${logos[i].fileName}"/></div>
+                    <a href="#" onclick="downloadFunction('${logos[i].url}', '${logos[i].fileName}')">download</a>
+                </div>
                 </div>`;
              }
         })
