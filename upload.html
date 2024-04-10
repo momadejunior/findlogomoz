@@ -191,6 +191,7 @@
       console.log(data);
       if (data.errors) {
         console.log("Asset not published, retrying...");
+	       let constraint = document.getElementById('upload-sucess').innerHTML=`<div>Asset not published, retrying...</div>`;
         setTimeout(() => publishAsset(id), 5000); // Retry after 5 seconds
       } else {
         console.log("Asset published successfully!");
