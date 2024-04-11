@@ -190,7 +190,7 @@
             },
             body: JSON.stringify({
                 query: `query LogosItems {
-                assets {
+                assets(first: 100) {
                     id
                     size
                     fileName
