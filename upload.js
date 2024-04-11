@@ -1,4 +1,3 @@
-<script>
   let url = 'https://api-us-west-2.hygraph.com/v2/cltnjyce406ze07v0wktr3jh3/master';
 
   const firebaseConfig = {
@@ -100,4 +99,3 @@
           });
       });
   });
-</script>
