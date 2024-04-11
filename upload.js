@@ -52,6 +52,7 @@
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         document.getElementById('uploader').value = progress;
         console.log('Upload is ' + progress + '% done');
+	       let constraint = document.getElementById('upload-sucess').innerHTML=`<div>Upload is ' + ${progress} + '% done</div>`;
         switch (snapshot.state) {
           case firebase.storage.TaskState.PAUSED:
             console.log('Upload is paused');
