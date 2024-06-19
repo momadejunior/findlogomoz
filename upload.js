@@ -1,15 +1,15 @@
   let url = 'https://api-us-west-2.hygraph.com/v2/cltnjyce406ze07v0wktr3jh3/master';
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB9WDZnhjGzzjm66flZUmoHDQq6tdZDmsA",
-    authDomain: "chatbot-93051.firebaseapp.com",
-    databaseURL: "https://chatbot-93051-default-rtdb.firebaseio.com",
-    projectId: "chatbot-93051",
-    storageBucket: "chatbot-93051.appspot.com",
-    messagingSenderId: "910650346544",
-    appId: "1:910650346544:web:a632788aa15a6b3e9471f5",
-    measurementId: "G-TK65S06RH0"
-  };
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBreW_0IJDQ2F_duc2ZeRPAfl6foP93cUc",
+  authDomain: "findlogos-77103.firebaseapp.com",
+  projectId: "findlogos-77103",
+  storageBucket: "findlogos-77103.appspot.com",
+  messagingSenderId: "428504989885",
+  appId: "1:428504989885:web:2b036aa0a83b3ed84277d4",
+  measurementId: "G-RN7V4PLTH8"
+};
 
   firebase.initializeApp(firebaseConfig);
 
