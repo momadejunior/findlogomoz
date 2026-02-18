@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>findlogomoz — Logos de Moçambique</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCWB0HWZ9E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JCWB0HWZ9E');
+  </script>
+
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --primary: #1a56db;
+      --primary-light: #e8f0fe;
+      --accent: #16a34a;
+      --surface: #ffffff;
+      --surface2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --sidebar-w: 240px;
+      --nav-h: 64px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f1f5f9;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      height: var(--nav-h);
+      background: #ffffff !important;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .navbar-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--text) !important;
+      letter-spacing: -0.5px;
+    }
+    .navbar-brand span { color: var(--primary); }
+
+    .btn-upload {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .btn-upload:hover { background: #1447b8; color: #fff; }
+
+    .btn-cart-nav {
+      position: relative;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .btn-cart-nav:hover { border-color: var(--primary); color: var(--primary); }
+    .cart-badge {
+      position: absolute; top: -6px; right: -6px;
+      background: #ef4444; color: #fff;
+      font-size: 10px; font-weight: 700;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+    }
+
+    /* ===== HERO ===== */
+    .hero-section {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1a56db 60%, #0d47a1 100%);
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-section h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    .hero-section h1 span { color: #7dd3fc; }
+    .hero-section p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 28px; }
+
+    /* Search Bar */
+    .search-wrap {
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .search-wrap input {
+      width: 100%;
+      height: 54px;
+      border: none;
+      border-radius: 12px;
+      padding: 0 130px 0 20px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+    .search-wrap button {
+      position: absolute; top: 5px; right: 5px;
+      height: 44px; padding: 0 24px;
+      background: var(--primary);
+      color: #fff; border: none; border-radius: 8px;
+      font-weight: 600; font-size: 14px; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-wrap button:hover { background: #1447b8; }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex; justify-content: center; gap: 32px;
+      margin-top: 28px; flex-wrap: wrap;
+    }
+    .stat-item { color: rgba(255,255,255,0.8); font-size: 13px; }
+    .stat-item strong { color: #fff; font-size: 18px; display: block; font-family: 'Syne', sans-serif; }
+
+    /* ===== LAYOUT ===== */
+    .page-layout {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      min-height: calc(100vh - var(--nav-h) - 220px);
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: #fff;
+      border-right: 1px solid var(--border);
+      padding: 20px 12px;
+      position: sticky; top: var(--nav-h);
+      height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+    }
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .sidebar-title {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--muted); padding: 0 8px;
+      margin-bottom: 8px; margin-top: 16px;
+    }
+    .sidebar-title:first-child { margin-top: 0; }
+
+    /* Category nav items */
+    .cat-nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 10px; border-radius: 8px;
+      cursor: pointer; transition: all 0.15s;
+      border: 1px solid transparent;
+      margin-bottom: 2px; text-decoration: none;
+    }
+    .cat-nav-item:hover { background: var(--surface2); border-color: var(--border); }
+    .cat-nav-item.active {
+      background: var(--primary-light);
+      border-color: rgba(26,86,219,0.2);
+    }
+    .cat-icon-wrap {
+      width: 30px; height: 30px;
+      border-radius: 7px; background: var(--surface2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+    .cat-nav-item.active .cat-icon-wrap { background: rgba(26,86,219,0.1); }
+    .cat-nav-label {
+      flex: 1; font-size: 13px; font-weight: 500;
+      color: var(--muted);
+    }
+    .cat-nav-item:hover .cat-nav-label { color: var(--text); }
+    .cat-nav-item.active .cat-nav-label { color: var(--primary); font-weight: 600; }
+    .cat-nav-count {
+      font-size: 11px; font-weight: 600;
+      color: var(--muted); background: var(--surface2);
+      padding: 2px 7px; border-radius: 10px;
+    }
+    .cat-nav-item.active .cat-nav-count {
+      background: rgba(26,86,219,0.1); color: var(--primary);
+    }
+
+    .sidebar-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+    /* Chip filters */
+    .chip-group { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 4px; }
+    .chip {
+      padding: 4px 11px; border-radius: 6px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); }
+    .chip.active {
+      background: var(--primary-light);
+      border-color: var(--primary); color: var(--primary); font-weight: 600;
+    }
+
+    .btn-clear-filters {
+      width: 100%; margin-top: 16px; padding: 9px;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--muted); border-radius: 8px;
+      font-size: 13px; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-clear-filters:hover { border-color: #ef4444; color: #ef4444; }
+
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      flex: 1; padding: 20px;
+      min-width: 0;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
+    }
+    .result-info { font-size: 13px; color: var(--muted); }
+    .result-info strong { color: var(--text); }
+
+    .sort-select {
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 7px 12px; font-size: 13px; color: var(--text);
+      background: #fff; cursor: pointer; outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Mobile filter toggle */
+    .btn-filter-toggle {
+      display: none;
+      align-items: center; gap: 6px;
+      background: #fff; border: 1px solid var(--border);
+      padding: 8px 14px; border-radius: 8px;
+      font-size: 13px; cursor: pointer; color: var(--text);
+    }
+
+    /* ===== LOGO GRID ===== */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 14px;
+    }
+
+    /* ===== CARD ===== */
+    .logo-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      transition: all 0.2s; cursor: default;
+      position: relative;
+    }
+    .logo-card:hover {
+      border-color: #94a3b8;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-img-wrap {
+      height: 110px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px; background: #fafafa;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-img-wrap img {
+      max-width: 100%; max-height: 78px;
+      object-fit: contain;
+    }
+
+    .card-body-custom { padding: 10px 12px 12px; }
+
+    .card-name {
+      font-size: 12px; font-weight: 600; color: var(--text);
+      margin-bottom: 5px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* Category tag pill */
+    .cat-pill {
+      display: inline-flex; align-items: center; gap: 3px;
+      font-size: 10px; font-weight: 600;
+      padding: 2px 8px; border-radius: 5px;
+      margin-bottom: 9px; cursor: pointer;
+      transition: filter 0.15s; border: 1px solid transparent;
+    }
+    .cat-pill:hover { filter: brightness(0.9); }
+    /* Colour variants */
+    .pill-banca     { background:#dbeafe; color:#1d4ed8; border-color:#bfdbfe; }
+    .pill-telecom   { background:#fee2e2; color:#dc2626; border-color:#fecaca; }
+    .pill-energia   { background:#fef9c3; color:#a16207; border-color:#fde68a; }
+    .pill-ong       { background:#dcfce7; color:#15803d; border-color:#bbf7d0; }
+    .pill-desporto  { background:#f3e8ff; color:#7e22ce; border-color:#e9d5ff; }
+    .pill-retalho   { background:#ffedd5; color:#c2410c; border-color:#fed7aa; }
+    .pill-media     { background:#fce7f3; color:#be185d; border-color:#fbcfe8; }
+    .pill-tecnologia{ background:#cffafe; color:#0e7490; border-color:#a5f3fc; }
+    .pill-governo   { background:#d1fae5; color:#065f46; border-color:#a7f3d0; }
+    .pill-turismo   { background:#fef3c7; color:#92400e; border-color:#fde68a; }
+    .pill-transporte{ background:#f1f5f9; color:#475569; border-color:#e2e8f0; }
+    .pill-seguros   { background:#fee2e2; color:#991b1b; border-color:#fecaca; }
+    .pill-servicos  { background:#ecfdf5; color:#065f46; border-color:#a7f3d0; }
+    .pill-default   { background:#f1f5f9; color:#64748b; border-color:#e2e8f0; }
+
+    /* Action buttons */
+    .card-actions { display: flex; gap: 6px; }
+    .btn-like-card, .btn-cart-card {
+      flex: 1; padding: 6px 4px;
+      border-radius: 7px; border: 1px solid var(--border);
+      font-size: 11px; cursor: pointer; transition: all 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      background: var(--surface2); color: var(--muted);
+      font-family: 'Inter', sans-serif; font-weight: 500;
+    }
+    .btn-like-card:hover, .btn-like-card.liked {
+      background: #fee2e2; border-color: #fca5a5; color: #dc2626;
+    }
+    .btn-cart-card:hover, .btn-cart-card.in-cart {
+      background: var(--primary-light); border-color: #93c5fd; color: var(--primary);
+    }
+
+    /* Download link */
+    .btn-download-card {
+      display: block; text-align: center;
+      padding: 7px; margin-top: 7px;
+      background: #f8fafc; border: 1px solid var(--border);
+      border-radius: 7px; color: var(--primary);
+      font-size: 12px; font-weight: 600; text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-download-card:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Badges */
+    .badge-new {
+      position: absolute; top: 8px; left: 8px;
+      background: #16a34a; color: #fff;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.3px;
+      padding: 2px 7px; border-radius: 4px;
+    }
+    .badge-pop {
+      position: absolute; top: 8px; left: 8px;
+      background: #f97316; color: #fff;
+      font-size: 9px; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+    }
+
+    /* ===== CART DRAWER ===== */
+    .cart-overlay {
+      position: fixed; inset: 0;
+      background: rgba(15,23,42,0.5);
+      z-index: 400; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-drawer {
+      position: fixed; top: 0; right: 0;
+      width: 340px; height: 100vh;
+      background: #fff;
+      border-left: 1px solid var(--border);
+      z-index: 500;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+    }
+    .cart-drawer.open { transform: translateX(0); }
+
+    .cart-drawer-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-drawer-title {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px;
+    }
+    .btn-close-cart {
+      background: var(--surface2); border: 1px solid var(--border);
+      width: 32px; height: 32px; border-radius: 8px;
+      cursor: pointer; font-size: 16px; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+    }
+    .btn-close-cart:hover { border-color: #ef4444; color: #ef4444; }
+
+    .cart-items-list { flex: 1; overflow-y: auto; padding: 16px 20px; }
+    .cart-empty-msg { text-align: center; color: var(--muted); font-size: 14px; padding: 40px 0; }
+    .cart-empty-msg i { font-size: 36px; display: block; margin-bottom: 10px; opacity: 0.3; }
+
+    .cart-item-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .cart-item-thumb {
+      width: 52px; height: 40px; background: #f8fafc;
+      border: 1px solid var(--border); border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 4px; flex-shrink: 0;
+    }
+    .cart-item-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .cart-item-sub { font-size: 11px; color: var(--muted); }
+    .btn-remove-item {
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; font-size: 16px; padding: 4px;
+      transition: color 0.15s;
+    }
+    .btn-remove-item:hover { color: #ef4444; }
+
+    .cart-drawer-footer { padding: 16px 20px; border-top: 1px solid var(--border); }
+    .btn-download-all {
+      width: 100%; padding: 14px;
+      background: var(--primary); color: #fff;
+      border: none; border-radius: 10px;
+      font-weight: 700; font-size: 14px; cursor: pointer;
+      transition: background 0.2s; font-family: 'Syne', sans-serif;
+    }
+    .btn-download-all:hover { background: #1447b8; }
+
+    /* ===== TOAST ===== */
+    .toast-notif {
+      position: fixed; bottom: 24px; left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #0f172a; color: #fff;
+      padding: 11px 20px; border-radius: 10px;
+      font-size: 13px; z-index: 600;
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .toast-notif.show { transform: translateX(-50%) translateY(0); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #fff; border-top: 1px solid var(--border);
+      padding: 24px; text-align: center;
+      color: var(--muted); font-size: 13px;
+      margin-top: 40px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none; position: fixed; left: 0; top: var(--nav-h);
+        height: calc(100vh - var(--nav-h)); z-index: 300;
+        width: 260px;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+      }
+      .sidebar.mobile-open { display: block; }
+      .btn-filter-toggle { display: flex; }
+      .cart-drawer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" href="index.html">find<span>logo</span>moz</a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fw-500 active" href="index.html"><i class="bi bi-house me-1"></i>Home</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn-cart-nav" onclick="toggleCartDrawer()">
+          <i class="bi bi-bag"></i> Carrinho
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <a href="upload.html" class="btn-upload">
+          <i class="bi bi-upload me-1"></i>Upload
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="hero-section">
+  <h1>Encontre <span>Logos</span> de Moçambique</h1>
+  <p>Descubra, guarde e descarregue logos de empresas, marcas e organizações</p>
+
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="Pesquisar logos por nome ou categoria..." oninput="filterLogos()">
+    <button onclick="filterLogos()"><i class="bi bi-search me-1"></i>Buscar</button>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><strong id="totalCount">36</strong>Logos disponíveis</div>
+    <div class="stat-item"><strong>14</strong>Categorias</div>
+    <div class="stat-item"><strong>Free</strong>Descarregamento</div>
+  </div>
+</div>
+
+<!-- ===== PAGE BODY ===== -->
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <p class="sidebar-title">Categorias</p>
+    <nav id="catNav">
+      <a class="cat-nav-item active" onclick="setCat('Todos')" href="#">
+        <div class="cat-icon-wrap">🏠</div>
+        <span class="cat-nav-label">Todos</span>
+        <span class="cat-nav-count" id="cnt-Todos">36</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Banca')" href="#">
+        <div class="cat-icon-wrap">🏦</div>
+        <span class="cat-nav-label">Banca</span>
+        <span class="cat-nav-count" id="cnt-Banca">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Telecom')" href="#">
+        <div class="cat-icon-wrap">📡</div>
+        <span class="cat-nav-label">Telecom</span>
+        <span class="cat-nav-count" id="cnt-Telecom">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Energia')" href="#">
+        <div class="cat-icon-wrap">⚡</div>
+        <span class="cat-nav-label">Energia</span>
+        <span class="cat-nav-count" id="cnt-Energia">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('ONG')" href="#">
+        <div class="cat-icon-wrap">🌍</div>
+        <span class="cat-nav-label">ONG / Cooperação</span>
+        <span class="cat-nav-count" id="cnt-ONG">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Desporto')" href="#">
+        <div class="cat-icon-wrap">⚽</div>
+        <span class="cat-nav-label">Desporto</span>
+        <span class="cat-nav-count" id="cnt-Desporto">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Retalho')" href="#">
+        <div class="cat-icon-wrap">🛍️</div>
+        <span class="cat-nav-label">Retalho</span>
+        <span class="cat-nav-count" id="cnt-Retalho">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Media')" href="#">
+        <div class="cat-icon-wrap">📺</div>
+        <span class="cat-nav-label">Média</span>
+        <span class="cat-nav-count" id="cnt-Media">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Tecnologia')" href="#">
+        <div class="cat-icon-wrap">💻</div>
+        <span class="cat-nav-label">Tecnologia</span>
+        <span class="cat-nav-count" id="cnt-Tecnologia">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Governo')" href="#">
+        <div class="cat-icon-wrap">🏛️</div>
+        <span class="cat-nav-label">Governo</span>
+        <span class="cat-nav-count" id="cnt-Governo">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Transporte')" href="#">
+        <div class="cat-icon-wrap">✈️</div>
+        <span class="cat-nav-label">Transporte</span>
+        <span class="cat-nav-count" id="cnt-Transporte">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Turismo')" href="#">
+        <div class="cat-icon-wrap">🏨</div>
+        <span class="cat-nav-label">Turismo / Hotelaria</span>
+        <span class="cat-nav-count" id="cnt-Turismo">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Seguros')" href="#">
+        <div class="cat-icon-wrap">🛡️</div>
+        <span class="cat-nav-label">Seguros</span>
+        <span class="cat-nav-count" id="cnt-Seguros">0</span>
+      </a>
+      <a class="cat-nav-item" onclick="setCat('Serviços')" href="#">
+        <div class="cat-icon-wrap">🔧</div>
+        <span class="cat-nav-label">Serviços</span>
+        <span class="cat-nav-count" id="cnt-Serviços">0</span>
+      </a>
+    </nav>
+
+    <hr class="sidebar-divider">
+
+    <p class="sidebar-title">Tipo de Ficheiro</p>
+    <div class="chip-group" id="typeChips">
+      <span class="chip active" onclick="setChip('type','Todos',this)">Todos</span>
+      <span class="chip" onclick="setChip('type','PNG',this)">PNG</span>
+      <span class="chip" onclick="setChip('type','SVG',this)">SVG</span>
+      <span class="chip" onclick="setChip('type','JPG',this)">JPG</span>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <p class="sidebar-title">Fundo</p>
+    <div class="chip-group" id="bgChips">
+      <span class="chip active" onclick="setChip('bg','Todos',this)">Todos</span>
+      <span class="chip" onclick="setChip('bg','Claro',this)">☀️ Claro</span>
+      <span class="chip" onclick="setChip('bg','Escuro',this)">🌙 Escuro</span>
+      <span class="chip" onclick="setChip('bg','Transparente',this)">◻ Transp.</span>
+    </div>
+
+    <button class="btn-clear-filters" onclick="clearFilters()">
+      <i class="bi bi-x-circle me-1"></i>Limpar Filtros
+    </button>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <div class="toolbar">
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn-filter-toggle" onclick="document.getElementById('sidebar').classList.toggle('mobile-open')">
+          <i class="bi bi-funnel"></i> Filtros
+        </button>
+        <span class="result-info"><strong id="resultCount">36</strong> logos encontrados</span>
+      </div>
+      <select class="sort-select" id="sortSelect" onchange="filterLogos()">
+        <option value="recent">Mais Recentes</option>
+        <option value="popular">Mais Populares</option>
+        <option value="alpha">A — Z</option>
+        <option value="liked">Mais Curtidos</option>
+      </select>
+    </div>
+
+    <div class="logo-grid" id="logoGrid"></div>
+
+  </main>
+</div>
+
+<!-- ===== CART OVERLAY & DRAWER ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCartDrawer()"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-header">
+    <span class="cart-drawer-title"><i class="bi bi-bag me-2"></i>Carrinho</span>
+    <button class="btn-close-cart" onclick="toggleCartDrawer()">✕</button>
+  </div>
+  <div class="cart-items-list" id="cartItemsList">
+    <div class="cart-empty-msg">
+      <i class="bi bi-bag-x"></i>
+      Nenhum logo adicionado ainda
+    </div>
+  </div>
+  <div class="cart-drawer-footer">
+    <button class="btn-download-all" onclick="downloadAll()">
+      <i class="bi bi-download me-2"></i>Descarregar Todos
+    </button>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast-notif" id="toastNotif"></div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <span>© 2024 <strong>findlogomoz</strong>. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+/* ---------- DATA ---------- */
+/* 
+  In production, this data comes from your script.js / backend.
+  Replace the img URLs with your actual Supabase/Firebase/etc URLs.
+  Each logo object should match: { id, name, cat, type, bg, likes, badge, img, downloadUrl }
+*/
+const logos = [
+  { id:1,  name:'Cooperação Alemã',    cat:'ONG',        type:'PNG', bg:'Claro',       likes:24,  badge:'',    img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/200px-Flag_of_Germany.svg.png', downloadUrl:'#' },
+  { id:2,  name:'Namaacha',            cat:'Retalho',    type:'PNG', bg:'Claro',       likes:18,  badge:'new', img:'https://via.placeholder.com/140x70/16a34a/fff?text=Namaacha', downloadUrl:'#' },
+  { id:3,  name:'Amado',               cat:'Retalho',    type:'PNG', bg:'Claro',       likes:31,  badge:'',    img:'https://via.placeholder.com/140x70/000/fff?text=AmadO', downloadUrl:'#' },
+  { id:4,  name:'CN',                  cat:'Serviços',   type:'PNG', bg:'Transparente',likes:9,   badge:'',    img:'https://via.placeholder.com/90x90/9b8fcc/fff?text=CN', downloadUrl:'#' },
+  { id:5,  name:'MIRO Software',       cat:'Tecnologia', type:'SVG', bg:'Claro',       likes:45,  badge:'pop', img:'https://via.placeholder.com/140x70/f0f0f5/333?text=MIR⊕', downloadUrl:'#' },
+  { id:6,  name:'Coca-Cola',           cat:'Retalho',    type:'PNG', bg:'Claro',       likes:122, badge:'pop', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/200px-Coca-Cola_logo.svg.png', downloadUrl:'#' },
+  { id:7,  name:'Costa do Sol',        cat:'Turismo',    type:'PNG', bg:'Claro',       likes:17,  badge:'',    img:'https://via.placeholder.com/140x70/fbbf24/fff?text=Costa+Sol', downloadUrl:'#' },
+  { id:8,  name:'AFD',                 cat:'ONG',        type:'SVG', bg:'Claro',       likes:33,  badge:'',    img:'https://via.placeholder.com/140x70/2d3a8c/fff?text=AFD', downloadUrl:'#' },
+  { id:9,  name:'AISM',                cat:'ONG',        type:'PNG', bg:'Claro',       likes:12,  badge:'',    img:'https://via.placeholder.com/140x70/c0c0c0/333?text=AISM', downloadUrl:'#' },
+  { id:10, name:'NTSHOLE',             cat:'Serviços',   type:'PNG', bg:'Claro',       likes:8,   badge:'new', img:'https://via.placeholder.com/140x70/059669/fff?text=NTSHOLE', downloadUrl:'#' },
+  { id:11, name:'AON',                 cat:'Seguros',    type:'SVG', bg:'Claro',       likes:54,  badge:'pop', img:'https://via.placeholder.com/140x70/e11d48/fff?text=AON', downloadUrl:'#' },
+  { id:12, name:'Ya! Rapódromo',       cat:'Media',      type:'PNG', bg:'Escuro',      likes:67,  badge:'pop', img:'https://via.placeholder.com/90x90/991b1b/fff?text=YA!', downloadUrl:'#' },
+  { id:13, name:'Vodacom',             cat:'Telecom',    type:'SVG', bg:'Claro',       likes:98,  badge:'pop', img:'https://via.placeholder.com/140x70/e11d48/fff?text=Vodacom', downloadUrl:'#' },
+  { id:14, name:'mcel',                cat:'Telecom',    type:'SVG', bg:'Claro',       likes:76,  badge:'',    img:'https://via.placeholder.com/140x70/eab308/000?text=mcel', downloadUrl:'#' },
+  { id:15, name:'LAM',                 cat:'Transporte', type:'SVG', bg:'Claro',       likes:41,  badge:'',    img:'https://via.placeholder.com/140x70/1d4ed8/fff?text=LAM', downloadUrl:'#' },
+  { id:16, name:'CDM',                 cat:'Banca',      type:'SVG', bg:'Claro',       likes:37,  badge:'',    img:'https://via.placeholder.com/140x70/dc2626/fff?text=CDM', downloadUrl:'#' },
+  { id:17, name:'Kitara',              cat:'Tecnologia', type:'SVG', bg:'Claro',       likes:22,  badge:'new', img:'https://via.placeholder.com/140x70/f0f0f5/333?text=kitara', downloadUrl:'#' },
+  { id:18, name:'CCFM',                cat:'ONG',        type:'PNG', bg:'Escuro',      likes:15,  badge:'',    img:'https://via.placeholder.com/140x70/0d9488/fff?text=CCFM', downloadUrl:'#' },
+  { id:19, name:'Logos',               cat:'Media',      type:'SVG', bg:'Claro',       likes:28,  badge:'',    img:'https://via.placeholder.com/140x70/1e1e24/f0f0f5?text=Logos', downloadUrl:'#' },
+  { id:20, name:'Radisson',            cat:'Turismo',    type:'SVG', bg:'Claro',       likes:63,  badge:'pop', img:'https://via.placeholder.com/140x70/1e40af/fff?text=Radisson', downloadUrl:'#' },
+  { id:21, name:'Camões',              cat:'ONG',        type:'PNG', bg:'Claro',       likes:19,  badge:'',    img:'https://via.placeholder.com/140x70/e11d48/fff?text=Camões', downloadUrl:'#' },
+  { id:22, name:'Sasol',               cat:'Energia',    type:'SVG', bg:'Claro',       likes:44,  badge:'',    img:'https://via.placeholder.com/140x70/f97316/fff?text=Sasol', downloadUrl:'#' },
+  { id:23, name:'Standard Bank',       cat:'Banca',      type:'SVG', bg:'Claro',       likes:71,  badge:'pop', img:'https://via.placeholder.com/140x70/1d4ed8/fff?text=StdBank', downloadUrl:'#' },
+  { id:24, name:'FNB',                 cat:'Banca',      type:'SVG', bg:'Claro',       likes:55,  badge:'',    img:'https://via.placeholder.com/140x70/f59e0b/000?text=FNB', downloadUrl:'#' },
+  { id:25, name:'FC Tau-Tau',          cat:'Desporto',   type:'PNG', bg:'Escuro',      likes:88,  badge:'pop', img:'https://via.placeholder.com/90x90/1d4ed8/fff?text=τ-τ', downloadUrl:'#' },
+  { id:26, name:'CFM',                 cat:'Transporte', type:'SVG', bg:'Escuro',      likes:33,  badge:'',    img:'https://via.placeholder.com/90x90/111/fff?text=CFM', downloadUrl:'#' },
+  { id:27, name:'BCI',                 cat:'Banca',      type:'SVG', bg:'Claro',       likes:49,  badge:'',    img:'https://via.placeholder.com/140x70/f97316/fff?text=BCI', downloadUrl:'#' },
+  { id:28, name:'República MZ',        cat:'Governo',    type:'SVG', bg:'Transparente',likes:103, badge:'pop', img:'https://via.placeholder.com/90x90/009a44/fff?text=MZ', downloadUrl:'#' },
+  { id:29, name:'Nedbank',             cat:'Banca',      type:'SVG', bg:'Claro',       likes:38,  badge:'',    img:'https://via.placeholder.com/140x70/166534/fff?text=Nedbank', downloadUrl:'#' },
+  { id:30, name:'ANAC',                cat:'Governo',    type:'PNG', bg:'Claro',       likes:21,  badge:'',    img:'https://via.placeholder.com/140x70/2d3a8c/fff?text=ANAC', downloadUrl:'#' },
+  { id:31, name:'SIM Rede',            cat:'Telecom',    type:'SVG', bg:'Claro',       likes:14,  badge:'new', img:'https://via.placeholder.com/140x70/dc2626/fff?text=SIMRede', downloadUrl:'#' },
+  { id:32, name:'GFM',                 cat:'Media',      type:'PNG', bg:'Transparente',likes:26,  badge:'',    img:'https://via.placeholder.com/140x70/16a34a/fff?text=GFM', downloadUrl:'#' },
+  { id:33, name:'EDM',                 cat:'Energia',    type:'SVG', bg:'Claro',       likes:57,  badge:'',    img:'https://via.placeholder.com/140x70/eab308/000?text=EDM', downloadUrl:'#' },
+  { id:34, name:'Ferroviário',         cat:'Desporto',   type:'PNG', bg:'Escuro',      likes:72,  badge:'pop', img:'https://via.placeholder.com/90x90/166534/fff?text=FTC', downloadUrl:'#' },
+  { id:35, name:'Desportivo',          cat:'Desporto',   type:'PNG', bg:'Escuro',      likes:69,  badge:'',    img:'https://via.placeholder.com/90x90/fbbf24/000?text=DCM', downloadUrl:'#' },
+  { id:36, name:'X-Rede',             cat:'Telecom',    type:'PNG', bg:'Claro',       likes:11,  badge:'new', img:'https://via.placeholder.com/140x70/dc2626/fff?text=X-Rede', downloadUrl:'#' },
+];
+
+/* ---------- STATE ---------- */
+let cart  = [];
+let liked = new Set();
+let filters = { cat:'Todos', type:'Todos', bg:'Todos' };
+
+/* ---------- CATEGORY HELPERS ---------- */
+const CAT_ICONS = {
+  'Todos':'🏠','Banca':'🏦','Telecom':'📡','Energia':'⚡','ONG':'🌍',
+  'Desporto':'⚽','Retalho':'🛍️','Media':'📺','Tecnologia':'💻',
+  'Governo':'🏛️','Transporte':'✈️','Turismo':'🏨','Seguros':'🛡️','Serviços':'🔧'
+};
+
+const CAT_PILL = {
+  'Banca':'pill-banca','Telecom':'pill-telecom','Energia':'pill-energia',
+  'ONG':'pill-ong','Desporto':'pill-desporto','Retalho':'pill-retalho',
+  'Media':'pill-media','Tecnologia':'pill-tecnologia','Governo':'pill-governo',
+  'Turismo':'pill-turismo','Transporte':'pill-transporte','Seguros':'pill-seguros',
+  'Serviços':'pill-servicos'
+};
+
+/* ---------- SET CATEGORY ---------- */
+function setCat(cat, e) {
+  if (e) e.preventDefault();
+  filters.cat = cat;
+  document.querySelectorAll('.cat-nav-item').forEach(el => {
+    el.classList.toggle('active', el.getAttribute('onclick').includes(`'${cat}'`));
+  });
+  filterLogos();
+}
+
+/* ---------- SET CHIP FILTER ---------- */
+function setChip(key, val, el) {
+  filters[key] = val;
+  el.closest('.chip-group').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  filterLogos();
+}
+
+/* ---------- CLEAR FILTERS ---------- */
+function clearFilters() {
+  filters = { cat:'Todos', type:'Todos', bg:'Todos' };
+  setCat('Todos');
+  document.querySelectorAll('.chip-group').forEach(g => {
+    g.querySelectorAll('.chip').forEach((c,i) => c.classList.toggle('active', i===0));
+  });
+  document.getElementById('searchInput').value = '';
+  filterLogos();
+}
+
+/* ---------- FILTER & RENDER ---------- */
+function filterLogos() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const sort = document.getElementById('sortSelect').value;
+
+  // First pass: apply type+bg+search (for counts)
+  let base = logos.filter(l => {
+    const mq   = !q || l.name.toLowerCase().includes(q) || l.cat.toLowerCase().includes(q);
+    const mType = filters.type === 'Todos' || l.type === filters.type;
+    const mBg   = filters.bg   === 'Todos' || l.bg   === filters.bg;
+    return mq && mType && mBg;
+  });
+
+  // Update sidebar counts
+  updateCounts(base);
+
+  // Second pass: apply category
+  let result = filters.cat === 'Todos' ? base : base.filter(l => l.cat === filters.cat);
+
+  // Sort
+  if (sort === 'popular' || sort === 'liked') result.sort((a,b) => b.likes - a.likes);
+  else if (sort === 'alpha') result.sort((a,b) => a.name.localeCompare(b.name));
+
+  document.getElementById('resultCount').textContent = result.length;
+  document.getElementById('totalCount').textContent = logos.length;
+  renderGrid(result);
+}
+
+function updateCounts(base) {
+  const cats = ['Todos','Banca','Telecom','Energia','ONG','Desporto','Retalho',
+                'Media','Tecnologia','Governo','Transporte','Turismo','Seguros','Serviços'];
+  cats.forEach(cat => {
+    const el = document.getElementById('cnt-' + cat);
+    if (!el) return;
+    el.textContent = cat === 'Todos' ? base.length : base.filter(l => l.cat === cat).length;
+  });
+}
+
+function renderGrid(data) {
+  const grid = document.getElementById('logoGrid');
+  if (data.length === 0) {
+    grid.innerHTML = `
+      <div class="col-12 text-center py-5">
+        <i class="bi bi-search" style="font-size:2.5rem;color:var(--muted);opacity:.4"></i>
+        <p class="mt-3 text-muted">Nenhum logo encontrado. Tente outro termo.</p>
+      </div>`;
+    return;
+  }
+  grid.innerHTML = data.map(l => {
+    const pillClass = CAT_PILL[l.cat] || 'pill-default';
+    const icon = CAT_ICONS[l.cat] || '📁';
+    const isLiked = liked.has(l.id);
+    const inCart  = cart.some(c => c.id === l.id);
+    return `
+      <div class="logo-card" id="card-${l.id}">
+        ${l.badge === 'new' ? '<span class="badge-new">NOVO</span>' : ''}
+        ${l.badge === 'pop' ? '<span class="badge-pop">🔥 Top</span>' : ''}
+        <div class="card-img-wrap">
+          <img src="${l.img}" alt="${l.name}" loading="lazy">
+        </div>
+        <div class="card-body-custom">
+          <div class="card-name">${l.name}</div>
+          <div class="cat-pill ${pillClass}" onclick="setCat('${l.cat}')">${icon} ${l.cat}</div>
+          <div class="card-actions">
+            <button class="btn-like-card ${isLiked?'liked':''}" onclick="toggleLike(${l.id},this)">
+              <i class="bi ${isLiked?'bi-heart-fill':'bi-heart'}"></i>
+              <span>${l.likes + (isLiked?1:0)}</span>
+            </button>
+            <button class="btn-cart-card ${inCart?'in-cart':''}" onclick="toggleCartItem(${l.id})">
+              <i class="bi ${inCart?'bi-bag-check-fill':'bi-bag-plus'}"></i>
+              ${inCart?'Adicionado':'Add'}
+            </button>
+          </div>
+          <a href="${l.downloadUrl}" class="btn-download-card" download>
+            <i class="bi bi-download me-1"></i>Download ${l.type}
+          </a>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ---------- LIKE ---------- */
+function toggleLike(id, btn) {
+  const logo = logos.find(l => l.id === id);
+  if (liked.has(id)) {
+    liked.delete(id);
+    btn.classList.remove('liked');
+    btn.querySelector('i').className = 'bi bi-heart';
+    btn.querySelector('span').textContent = logo.likes;
+    toast('Like removido');
+  } else {
+    liked.add(id);
+    btn.classList.add('liked');
+    btn.querySelector('i').className = 'bi bi-heart-fill';
+    btn.querySelector('span').textContent = logo.likes + 1;
+    toast('❤️ Logo curtido!');
+  }
+}
+
+/* ---------- CART ---------- */
+function toggleCartItem(id) {
+  const logo = logos.find(l => l.id === id);
+  if (cart.some(c => c.id === id)) {
+    cart = cart.filter(c => c.id !== id);
+    toast('Removido do carrinho');
+  } else {
+    cart.push(logo);
+    toast('✅ Adicionado ao carrinho!');
+  }
+  updateCartUI();
+  filterLogos();
+}
+
+function updateCartUI() {
+  // Badge
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = cart.length;
+  badge.style.display = cart.length > 0 ? 'flex' : 'none';
+
+  // Items list
+  const list = document.getElementById('cartItemsList');
+  if (cart.length === 0) {
+    list.innerHTML = `<div class="cart-empty-msg"><i class="bi bi-bag-x"></i>Nenhum logo adicionado ainda</div>`;
+    return;
+  }
+  list.innerHTML = cart.map(l => `
+    <div class="cart-item-row">
+      <div class="cart-item-thumb"><img src="${l.img}" alt="${l.name}"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${l.name}</div>
+        <div class="cart-item-sub">${l.cat} · ${l.type}</div>
+      </div>
+      <button class="btn-remove-item" onclick="toggleCartItem(${l.id})">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>`).join('');
+}
+
+function toggleCartDrawer() {
+  document.getElementById('cartDrawer').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+
+function downloadAll() {
+  if (cart.length === 0) { toast('⚠️ Carrinho vazio!'); return; }
+  toast(`⬇️ A descarregar ${cart.length} logos...`);
+  // In production: trigger actual downloads or ZIP generation
+}
+
+/* ---------- TOAST ---------- */
+function toast(msg) {
+  const el = document.getElementById('toastNotif');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 2400);
+}
+
+/* ---------- INIT ---------- */
+filterLogos();
+</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6866886292496070" crossorigin="anonymous"></script>
+
+</body>
+</html>
